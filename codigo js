@@ -1,0 +1,53 @@
+var  Fila  =  nulo
+function  onSubmit ( )  {
+        dejar  DataForm  =  Leer ( )
+        si  ( Fila  ==  nulo ) {
+            InsertarDatos ( DataForm )
+        }  más {
+            Actualizar ( DataForm )
+            Vaciar ( )
+    }
+}
+función  Leer ( )  {
+    dejar  DataForm  =  { }
+    DataForm [ "nom" ]  =  documento . getElementById ( "nom" ) . valor
+    DataForm [ "ape" ]  =  documento . getElementById ( "simio" ) . valor
+    DataForm [ "pais" ]  =  documento . getElementById ( "país" ) . valor
+    devolver  DataForm
+}
+función  InsertarDatos ( datos )  {
+    dejar  tabla  =  documento . getElementById ( "tabla" ) . getElementsByTagName ( 'tbody' ) [ 0 ]
+    deje  Fila  =  mesa . insertRow ( tabla . longitud )
+    columna1  =  Fila . insertCell ( 0 ) . innerHTML  =  datos . nom
+    columna2  =  Fila . insertCell ( 1 ) . innerHTML  =  datos . mono
+    columna3  =  Fila . insertCell ( 2 ) . innerHTML  =  datos . pais
+    columna3  =  Fila . insertCell ( 3 ) . innerHTML  =  `<input class =" enviar "type =" button "onClick =" Editarr (esto) "value =" Editar ">
+                                               <input class = "submit" type = "button" onClick = "Borrarr (esto)" value = "Borrar"> `
+    documento . getElementById ( "nom" ) . enfoque ( )
+    Vaciar ( )
+}
+función  Vaciar ( )  {
+    documento . getElementById ( "nom" ) . valor  =  ""
+    documento . getElementById ( "simio" ) . valor  =  ""
+    documento . getElementById ( "país" ) . valor  =  ""
+    Fila  =  nulo
+}
+función  Editarr ( td )  {
+    Fila  =  td . parentElement . parentElement
+    documento . getElementById ( "nom" ) . valor  =  Fila . células [ 0 ] . innerHTML
+    documento . getElementById ( "simio" ) . valor  =  Fila . células [ 1 ] . innerHTML
+    documento . getElementById ( "país" ) . valor  =  Fila . células [ 2 ] . innerHTML
+}
+función  Actualizar ( DataForm )  {
+    Fila . células [ 0 ] . innerHTML  =  DataForm . nom
+    Fila . células [ 1 ] . innerHTML  =  DataForm . mono
+    Fila . células [ 2 ] . innerHTML  =  DataForm . pais
+    documento . getElementById ( "nom" ) . enfoque ( )
+}
+función  Borrarr ( td )  {
+    if  ( confirm ( '¿Seguro de borrar este registro?' ) )  {
+        fila  =  td . parentElement . parentElement
+        documento . getElementById ( "tabla" ) . deleteRow ( fila . índice de fila )
+        Vaciar ( )
+    }
+}
